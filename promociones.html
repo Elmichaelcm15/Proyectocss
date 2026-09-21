@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promociones - Librería</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="img/img1.jpg">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #753f26;
+        }
+
+        /* Sección de Promociones */
+        .promociones-section {
+            text-align: center;
+            padding: 50px 0;
+            background-color: #753f26;
+        }
+
+        .promociones-section h2 {
+            font-size: 36px;
+            color: #000000;
+            margin-bottom: 30px;
+        }
+
+        .promociones-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 0 auto;
+            max-width: 1200px;
+        }
+
+        .promocion {
+            background-color: #f8f8f8;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+            padding: 20px;
+            width: 300px;
+            text-align: center;
+        }
+
+        /* Imagenes dinamicas */
+        .promocion img {
+            width: 100%;
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+
+        .promocion img:hover {
+            transform: scale(1.05);
+        }
+
+        .promocion h3 {
+            font-size: 24px;
+            color: #555;
+            margin: 20px 0 10px;
+        }
+
+        .promocion p {
+            font-size: 16px;
+            color: #777;
+        }
+
+        .promocion .price {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .promocion .btn {
+            background-color: #000000;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        /* Sección de Temporizador */
+        .temporizador {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 24px;
+            color: #000000;
+        }
+
+        /* Sección de búsqueda */
+        .search-bar {
+            margin: 20px auto;
+            text-align: center;
+        }
+
+        .search-bar input {
+            padding: 10px;
+            width: 300px;
+            font-size: 16px;
+        }
+
+        .search-bar button {
+            padding: 10px;
+            background-color: #000000;
+            color: white;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .search-bar button:hover {
+            background-color: #727272;
+            transition: 0.5s;
+        }
+
+        /* Sección de Filtro de Categorías */
+        .filter-section {
+            text-align: center;
+            margin: 30px 0;
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        .filter-section select {
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        /* Sección de reseñas */
+        .reseñas-section {
+            margin-top: 50px;
+            text-align: center;
+            padding: 20px;
+            background-color: #753f26;
+        }
+
+        .reseña {
+            background-color: #a8a8a8;
+            margin: 20px auto;
+            padding: 20px;
+            max-width: 600px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .reseña p {
+            font-size: 18px;
+            color: #333;
+        }
+
+        /* Sección de íconos de redes sociales */
+        .social-icons {
+            margin-top: 60px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .social-icons a {
+            text-decoration: none;
+            margin: 0 10px;
+            display: inline-block;
+        }
+
+        .social-icons img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
+
+        /* Botón para volver a la página principal */
+        .btn-back {
+            margin-top: 50px;
+            background-color: #030303;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            display: inline-block;
+        }
+
+        .btn-back:hover {
+            background-color: #666666;
+            transition: 0.5s;
+        }
+
+        /* Notificaciones */
+        .notification {
+            background-color: #000000;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            position: fixed;
+            width: 100%;
+            z-index: 100;
+            transition: top 0.5s;
+            top: -50px;
+        }
+
+        #notification1.show, #notification2.show, #notification3.show {
+            top: 0;
+        }
+
+        .footer {
+            width: 100%;
+            height: 4em;
+            background-color: #753f26;
+            color: rgb(0, 0, 0);
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .text-footer {
+            font-size: 1.5em;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Notificaciones -->
+    <div id="notification1" class="notification">¡Bienvenido a nuestras promociones!</div>
+    <div id="notification2" class="notification">¡Oferta especial: 30% de descuento en libros clásicos!</div>
+    <div id="notification3" class="notification">¡Envío gratis en compras mayores a $80.000 COP durante este mes!</div>
+
+    <div class="promociones-section">
+        <h2>Nuestras Promociones</h2>
+
+        <!-- Barra de búsqueda -->
+        <div class="search-bar">
+            <input type="text" placeholder="Buscar libros en promoción..." id="search">
+            <button onclick="buscarLibro()">Buscar</button>
+        </div>
+
+        <!-- Filtro de Categorías -->
+        <div class="filter-section">
+            <h3>Filtrar por Categoría:</h3>
+            <select id="category-filter" onchange="filtrarPromociones()">
+                <option value="todos">Todos</option>
+                <option value="ficcion">Ficción</option>
+                <option value="no-ficcion">No Ficción</option>
+                <option value="infantil">Infantil</option>
+                <option value="clasicos">Clásicos</option>
+            </select>
+        </div>
+
+        <!-- Sección de Temporizador -->
+        <div class="temporizador">
+            <h3>Promoción termina en:</h3>
+            <div id="countdown"></div>
+        </div>
+
+        <div class="promociones-container" id="promociones">
+            <div class="promocion" data-category="ficcion">
+                <img src="img/Promo1.webp" alt="Promoción 1">
+                <h3>Descuento del 20%</h3>
+                <p>Obtén un 20% de descuento en todos nuestros libros.</p>
+                <div class="price">$30.000 COP</div>
+                <a href="#" class="btn">Ver Más</a>
+            </div>
+            <div class="promocion" data-category="no-ficcion">
+                <img src="img/promo2.jpeg" alt="Promoción 2">
+                <h3>Compra 2 y Lleva 1 Gratis</h3>
+                <p>Aprovecha esta oferta en todos los géneros literarios.</p>
+                <div class="price">$50.000 COP</div>
+                <a href="#" class="btn">Ver Más</a>
+            </div>
+            <div class="promocion" data-category="infantil">
+                <img src="img/Promo3.webp" alt="promocion 3">
+                <h3>Super oferta</h3>
+                <p>Disfruta de 2 libros interactivos y 2 sopas de letras por compras superiores a $200.000 COP</p>
+                <div class="price">$200.000 COP</div>
+                <a href="#" class="btn">Ver mas</a>
+            </div>
+            <div class="promocion" data-category="clasicos">
+                <img src="img/promo4.webp" alt="Promoción 4">
+                <h3>Envío Gratis</h3>
+                <p>Envío gratis en compras superiores a $100.000 COP.</p>
+                <div class="price">$70.000 COP</div>
+                <a href="#" class="btn">Ver Más</a>
+            </div>
+        </div>
+
+        <!-- Sección de reseñas -->
+        <div class="reseñas-section">
+            <h2>Lo que dicen nuestros clientes</h2>
+            <div class="reseña">
+                <p>"Compré tres libros con el 2x1 y fue una excelente experiencia. ¡Llegaron rápido y en perfecto estado!"</p>
+                <p><strong>- Juan Pérez</strong></p>
+            </div>
+            <div class="reseña">
+                <p>"Aproveché el envío gratis y fue muy conveniente. Gran selección de libros."</p>
+                <p><strong>- Ana Gómez</strong></p>
+            </div>
+        </div>
+
+        <!-- Sección de íconos de redes sociales -->
+        <div class="social-icons">
+            <a href="#"><img src="img/Facebook.png" alt="Facebook"></a>
+            <a href="#"><img src="img/twitter.avif" alt="Twitter"></a>
+            <a href="#"><img src="img/Instragam.png" alt="Instagram"></a>
+        </div>
+
+        <!-- Botón para volver a la página principal corregido a index.html -->
+        <a href="index.html" class="btn-back">Volver a la Página Principal</a>
+    </div>
+
+    <footer class="footer">
+        <p class="text-footer">© 2026 Fesna. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        // Temporizador de la promoción actualizado al 2026
+        var countDownDate = new Date("Oct 31, 2026 23:59:59").getTime();
+        var x = setInterval(function() {
+            var now = new Date().getTime();
+            var distance = countDownDate - now;
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("countdown").innerHTML = days + "d " + hours + "h " +
+                minutes + "m " + seconds + "s ";
+
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("countdown").innerHTML = "Promoción finalizada";
+            }
+        }, 1000);
+
+        // Función para mostrar y ocultar las notificaciones
+        function mostrarNotificaciones() {
+            setTimeout(function() {
+                let notification1 = document.getElementById('notification1');
+                notification1.classList.add('show');
+                setTimeout(function() {
+                    notification1.classList.remove('show');
+                }, 5000);
+            }, 500);
+
+            setTimeout(function() {
+                let notification2 = document.getElementById('notification2');
+                notification2.classList.add('show');
+                setTimeout(function() {
+                    notification2.classList.remove('show');
+                }, 5000);
+            }, 7000);
+
+            setTimeout(function() {
+                let notification3 = document.getElementById('notification3');
+                notification3.classList.add('show');
+                setTimeout(function() {
+                    notification3.classList.remove('show');
+                }, 5000);
+            }, 13000);
+        }
+
+        window.onload = function() {
+            mostrarNotificaciones();
+            setInterval(function() {
+                mostrarNotificaciones();
+            }, 20000);
+        };
+
+        // Búsqueda de libros
+        function buscarLibro() {
+            var input = document.getElementById("search").value.toLowerCase();
+            var promociones = document.getElementById("promociones").getElementsByClassName("promocion");
+            for (var i = 0; i < promociones.length; i++) {
+                var titulo = promociones[i].getElementsByTagName("h3")[0].innerHTML.toLowerCase();
+                if (titulo.indexOf(input) > -1) {
+                    promociones[i].style.display = "";
+                } else {
+                    promociones[i].style.display = "none";
+                }
+            }
+        }
+
+        // Filtrar promociones por categoría
+        function filtrarPromociones() {
+            var filtro = document.getElementById("category-filter").value;
+            var promociones = document.getElementById("promociones").getElementsByClassName("promocion");
+            for (var i = 0; i < promociones.length; i++) {
+                if (filtro === "todos" || promociones[i].getAttribute("data-category") === filtro) {
+                    promociones[i].style.display = "";
+                } else {
+                    promociones[i].style.display = "none";
+                }
+            }
+        }
+    </script>
+</body>
+</html>

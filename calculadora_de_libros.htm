@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Libros</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="img/img1.jpg">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #753f26;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 400px;
+            max-width: 90%;
+        }
+        h1 {
+            text-align: center;
+            font-size: 1.8em;
+            color: #753f26;
+        }
+        label, select, input, button {
+            margin-top: 10px;
+            display: block;
+            width: 100%;
+            padding: 10px;
+            font-size: 1em;
+        }
+        #result {
+            margin-top: 20px;
+            text-align: center;
+            font-weight: bold;
+        }
+        button {
+            background-color: #000000;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #753f26;
+        }
+        #result span {
+            display: block;
+            margin-top: 10px;
+            font-size: 1.2em;
+            color: #333;
+        }
+        .btn-regreso {
+            background-color: #8B4513;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Calculadora de Libros</h1>
+        
+        <!-- Selección de libro con valores corregidos -->
+        <label for="libro">Selecciona el libro:</label>
+        <select id="libro">
+            <option value="90000">Combo (Satanás y Akelarre) (90,000 COP)</option>
+            <option value="120000">Buda Blues (120,000 COP)</option>
+            <option value="40000">Scorpio City (40,000 COP)</option>
+            <option value="70000">Apocalipsis (70,000 COP)</option>
+        </select>
+
+        <!-- Cantidad de libros -->
+        <label for="cantidad">Cantidad de libros:</label>
+        <input type="number" id="cantidad" placeholder="Ingrese la cantidad de libros" min="1">
+
+        <!-- Descuento opcional -->
+        <label for="descuento">Descuento (%):</label>
+        <input type="number" id="descuento" placeholder="Ingrese el porcentaje de descuento" min="0" max="100">
+
+        <!-- Botón para calcular -->
+        <button id="calcular">Calcular Total</button>
+
+        <!-- Botón de regreso actualizado a index.html -->
+        <button type="button" class="btn-regreso" onclick="window.open('index.html', '_self')">Página principal</button>
+
+        <!-- Mostrar resultados -->
+        <div id="result">
+            <span>Total sin impuestos: COP $<span id="totalSinImpuesto">0.00</span></span>
+            <span>Impuestos (15%): COP $<span id="impuesto">0.00</span></span>
+            <span>Total final: COP $<span id="totalConImpuesto">0.00</span></span>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('calcular').addEventListener('click', () => {
+            // Obtener valores
+            const precioLibro = parseFloat(document.getElementById('libro').value); // Precio del libro seleccionado en COP
+            const cantidad = parseInt(document.getElementById('cantidad').value); // Cantidad de libros
+            const descuento = parseFloat(document.getElementById('descuento').value) || 0; // Descuento opcional
+            const impuestoPorcentaje = 15; // Impuesto fijo del 15%
+
+            // Validar cantidad
+            if (isNaN(cantidad) || cantidad <= 0) {
+                alert('Por favor, ingrese una cantidad válida.');
+                return;
+            }
+
+            // Calcular total sin descuento
+            let totalSinDescuento = precioLibro * cantidad;
+
+            // Aplicar descuento (si lo hay)
+            let totalConDescuento = totalSinDescuento - (totalSinDescuento * (descuento / 100));
+
+            // Calcular impuesto (15%)
+            let impuesto = totalConDescuento * (impuestoPorcentaje / 100);
+
+            // Calcular total final con impuesto
+            let totalFinal = totalConDescuento + impuesto;
+
+            // Mostrar resultados en la página
+            document.getElementById('totalSinImpuesto').textContent = totalConDescuento.toLocaleString('es-CO', { minimumFractionDigits: 2 });
+            document.getElementById('impuesto').textContent = impuesto.toLocaleString('es-CO', { minimumFractionDigits: 2 });
+            document.getElementById('totalConImpuesto').textContent = totalFinal.toLocaleString('es-CO', { minimumFractionDigits: 2 });
+        });
+    </script>
+</body>
+</html>

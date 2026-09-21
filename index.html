@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>El rincon del lector</title>
+    <link rel="icon" href="img/img1.jpg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <!-- Enlace obligatorio de accesibilidad: Saltar al contenido principal -->
+    <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+
+    <header class="header">
+        <div class="header-container">
+            <!-- Logo de la empresa -->
+            <img src="img/img 4.jpg" width="10%" alt="logo de empresa" class="logo">
+
+            <!-- Iconos de redes sociales -->
+            <div class="social-media-header">
+                <a href="https://www.facebook.com" target="_blank" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.twitter.com" target="_blank" class="social-icon"><i class="fab fa-twitter"></i></a>
+            </div>
+
+            <!-- Botones de inicio de sesión y registro -->
+            <div class="header-buttons">
+                <button type="button" onclick="window.open('inicio de sesion.html', '_self');">INICIO DE SESIÓN</button>
+                <button type="button" onclick="window.open('registro.html', '_self');">REGÍSTRATE</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Nav con la imagen requerida para el selector descendente -->
+    <nav class="nav">
+        <img src="img/img 4.jpg" alt="Logo Nav" class="nav-img">
+        <ul class="barnav">
+            <li class="menu"><a href="calculadora_de_libros.htm">Calculadora de libros</a></li>
+            <li class="menu"><a href="promociones.html">PROMOCIONES</a></li>
+            <li class="menu"><a href="#">Mas vendidos</a></li>
+            <li class="menu"><a href="#">Destacado</a></li>
+            <li class="menu"><a href="#">Novedades</a></li>
+        </ul>
+    </nav>
+
+    <!-- Etiqueta main con el ID obligatorio para el enlace de salto -->
+    <main id="main-content">
+        <section class="banner">
+            <h1 class="title-banner">GALERIA</h1>
+            <a href="#" class="btn-banner" onclick="window.open('galeria.html', '_self');">¡Navega con Nosotros!</a>
+            
+            <!-- Galería superior usando la clase grid simétrica -->
+            <div class="galery grid">
+                <div class="box-galery">
+                    <div class="box-img">
+                        <img src="img/img 11.jpeg" alt="Buda Blues">
+                    </div>
+                    <a href="https://www.librerianacional.com/producto/buda-blues-397247" class="btn-img">COMPRAR</a>
+                </div>
+                <div class="box-galery">
+                    <div class="box-img">
+                        <img src="img/img 12.jpeg" alt="Lady Masacre">
+                    </div>
+                    <a href="https://ww3.lectulandia.com/book/lady-masacre/" class="btn-img">COMPRAR</a>
+                </div>
+                <div class="box-galery">
+                    <div class="box-img">
+                        <img src="img/img 13.jpeg" alt="La melancolía de los feos">
+                    </div>
+                    <a href="https://www.planetadelibros.com.co/libro-la-melancolia-de-los-feos/256503" class="btn-img">COMPRAR</a>
+                </div>
+                <div class="box-galery">
+                    <div class="box-img">
+                        <img src="img/img 14.jpg" alt="Scorpio City">
+                    </div>
+                    <a href="https://www.panamericana.com.co/scorpio-city-665338/p" class="btn-img">COMPRAR</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección inferior usando la clase flex -->
+        <section class="article flex">
+            <h2 class="title-article">Tus libros favoritos en el mejor lugar.</h2>
+            <p class="paragraph-article">En esta pagina, vas a encontrar los mejores libros web en el mercado, al mejor precio y en el momento que quieras.</p>
+            <div class="galery">
+                <div class="box-galery">
+                    <div class="box-img">
+                        <img src="img/img 6.jpeg" alt="Los vagabundos de dios">
+                    </div>
+                    <a href="https://www.panamericana.com.co/los-vagabundos-de-dios-673758/p" class="btn-img">COMPRAR</a>
+                </div>
+                <div class="box-galery">
+                    <div class="box-img">
+                        <img src="img/img 10.webp" alt="Satanás">
+                    </div>
+                    <a href="https://www.buscalibre.com.co/libro-satanas/9786287650510/p/55260513" class="btn-img">COMPRAR</a>
+                </div>
+                <div class="box-galery">
+                    <div class="box-img">
+                        <img src="img/img 9.jpeg" alt="Apocalipsis">
+                    </div>
+                    <a href="https://www.libreriadelau.com/apocalipsis-grupo-planeta-novela-y-narrativa-grupo-planeta-9786287568099/p" class="btn-img">COMPRAR</a>
+                </div>
+                <div class="box-galery">
+                    <div class="box-img">
+                        <img src="img/img 7.jpeg" alt="Relato de un asesino">
+                    </div>
+                    <a href="https://ww3.lectulandia.com/book/relato-de-un-asesino/" class="btn-img">COMPRAR</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p class="text-footer">© 2026 Fesna. todos los derechos reservados.</p>
+    </footer>
+    <script src="validacion.js"></script>
+</body>
+</html>
